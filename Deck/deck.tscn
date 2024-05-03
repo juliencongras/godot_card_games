@@ -1,33 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cparxsups2vcv"]
+[gd_scene load_steps=3 format=3 uid="uid://cparxsups2vcv"]
 
 [ext_resource type="Script" path="res://Deck/deck.gd" id="1_led4b"]
+[ext_resource type="Texture2D" uid="uid://rqhq11dnk8mt" path="res://Assets/Cards/1B.png" id="2_7a0ic"]
 
 [node name="Deck" type="Node2D"]
 script = ExtResource("1_led4b")
 
 [node name="DeckSprite" type="Sprite2D" parent="."]
-
-[node name="Draw" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 24.0
-offset_right = 24.0
-offset_bottom = 32.0
-text = "Draw"
-
-[node name="Draw2" type="Button" parent="."]
-offset_left = 80.0
-offset_top = 24.0
-offset_right = 143.0
-offset_bottom = 55.0
-text = "Shuffle"
-
-[node name="Draw3" type="Button" parent="."]
-offset_left = 160.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 55.0
-text = "Reset"
-
-[connection signal="pressed" from="Draw" to="." method="_on_draw_pressed"]
-[connection signal="pressed" from="Draw2" to="." method="_on_draw_2_pressed"]
-[connection signal="pressed" from="Draw3" to="." method="_on_draw_3_pressed"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7a0ic")

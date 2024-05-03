@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkiq8142w8cdk"]
+
+[ext_resource type="Script" path="res://Testing area/testing_area.gd" id="1_dsypp"]
+[ext_resource type="PackedScene" uid="uid://cparxsups2vcv" path="res://Deck/deck.tscn" id="1_prfap"]
+[ext_resource type="PackedScene" uid="uid://dppij7fg3eex7" path="res://Deck/card.tscn" id="2_0bxxe"]
+
+[node name="TestingArea" type="Node2D"]
+script = ExtResource("1_dsypp")
+cardScene = ExtResource("2_0bxxe")
+
+[node name="Deck" parent="." instance=ExtResource("1_prfap")]
+position = Vector2(104, 104)
+
+[node name="DrawButton" type="Button" parent="."]
+offset_left = 184.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 40.0
+text = "Draw"
+
+[node name="ShuffleButton" type="Button" parent="."]
+offset_left = 184.0
+offset_top = 72.0
+offset_right = 234.0
+offset_bottom = 103.0
+text = "Shuffle"
+
+[node name="ResetButton" type="Button" parent="."]
+offset_left = 184.0
+offset_top = 112.0
+offset_right = 234.0
+offset_bottom = 143.0
+text = "Reset"
+
+[node name="CardsZone" type="Node2D" parent="."]
+position = Vector2(104, 320)
+
+[connection signal="pressed" from="DrawButton" to="." method="_on_draw_button_pressed"]
+[connection signal="pressed" from="ShuffleButton" to="." method="_on_shuffle_button_pressed"]
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
