@@ -8,8 +8,10 @@ Main menu :
 
 Reusable deck :
 - [x] Array stocking all of the cards
-- [ ] Shuffle function
-- [ ] Draw function
+- [x] Shuffle function
+- [x] Draw function
+- [x] Reset deck function
+- [] Attribute card sprites to card in arrays
 
 Blackjack :
 - [ ] Reuse previous blackjack project

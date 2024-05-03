@@ -6,3 +6,28 @@
 script = ExtResource("1_led4b")
 
 [node name="DeckSprite" type="Sprite2D" parent="."]
+
+[node name="Draw" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 32.0
+text = "Draw"
+
+[node name="Draw2" type="Button" parent="."]
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 143.0
+offset_bottom = 55.0
+text = "Shuffle"
+
+[node name="Draw3" type="Button" parent="."]
+offset_left = 160.0
+offset_top = 24.0
+offset_right = 210.0
+offset_bottom = 55.0
+text = "Reset"
+
+[connection signal="pressed" from="Draw" to="." method="_on_draw_pressed"]
+[connection signal="pressed" from="Draw2" to="." method="_on_draw_2_pressed"]
+[connection signal="pressed" from="Draw3" to="." method="_on_draw_3_pressed"]
