@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cparxsups2vcv"]
+
+[ext_resource type="Script" path="res://Deck/deck.gd" id="1_led4b"]
+
+[node name="Deck" type="Node2D"]
+script = ExtResource("1_led4b")
+
+[node name="DeckSprite" type="Sprite2D" parent="."]

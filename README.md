@@ -7,7 +7,7 @@ Main menu :
 - [ ] Options menu
 
 Reusable deck :
-- [ ] Array stocking all of the cards
+- [x] Array stocking all of the cards
 - [ ] Shuffle function
 - [ ] Draw function
 
