@@ -3,15 +3,15 @@
 
 ## Todo:
 Main menu :
-- [] Menu list of all card games
-- [] Options menu
+- [ ] Menu list of all card games
+- [ ] Options menu
 
 Reusable deck :
-- [] Array stocking all of the cards
-- [] Shuffle function
-- [] Draw function
+- [ ] Array stocking all of the cards
+- [ ] Shuffle function
+- [ ] Draw function
 
 Blackjack :
-- [] Reuse previous blackjack project
+- [ ] Reuse previous blackjack project
 
 Poker
