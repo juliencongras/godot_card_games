@@ -11,7 +11,7 @@ Reusable deck :
 - [x] Shuffle function
 - [x] Draw function
 - [x] Reset deck function
-- [] Attribute card sprites to card in arrays
+- [ ] Attribute card sprites to card in arrays
 
 Blackjack :
 - [ ] Reuse previous blackjack project
