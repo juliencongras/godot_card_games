@@ -15,7 +15,7 @@ Reusable deck scene :
 - [x] Attribute card sprites to cards in arrays
 
 Card scene :
-- [ ] Make card scene stock card value and suit
+- [x] Make card scene stock card value and suit
 - [x] Display card
 
 Blackjack :

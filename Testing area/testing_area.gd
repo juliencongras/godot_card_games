@@ -8,7 +8,10 @@ func _on_draw_button_pressed():
 	var drawnCard = deck.drawCard()
 	var cardSceneInstance = cardScene.instantiate()
 	cardSceneInstance.cardSprite = drawnCard
+	cardSceneInstance.cardSuit = drawnCard[0]
+	cardSceneInstance.cardValue = int(drawnCard.erase(0, 1))
 	cards_zone.add_child(cardSceneInstance)
+	print(cardSceneInstance.cardValue)
 
 func _on_shuffle_button_pressed():
 	deck.shuffleDeck()
