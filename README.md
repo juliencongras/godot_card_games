@@ -2,7 +2,7 @@
  A collection of card games made in Godot.
 
 ## Todo:
-	-- Main menu
-	-- Reusable deck
-	-- Blackjack
-	-- Poker
+	- Main menu
+	- Reusable deck
+	- Blackjack
+	- Poker
