@@ -21,6 +21,7 @@ Card scene :
 Blackjack :
 - [ ] Reuse previous blackjack project
 - [ ] Add split
+- [ ] Add doubling
 - [ ] Add insurance
 
 Poker

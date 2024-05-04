@@ -10,7 +10,7 @@ var dealerHandOffset : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,12 +38,16 @@ func startBlackjackGame():
 
 func drawDealer():
 	var drawnCard = deck.drawCard()
-	drawnCard.position = Vector2(dealerHandOffset, 0)
+	var tween = get_tree().create_tween()
+	drawnCard.position = deck.position - dealer_hand.position
+	tween.tween_property(drawnCard, "position", Vector2(dealerHandOffset, 0), 0.3)
 	dealer_hand.add_child(drawnCard)
 
 func drawPlayer():
 	var drawnCard = deck.drawCard()
-	drawnCard.position = Vector2(playerHandOffset, 0)
+	var tween = get_tree().create_tween()
+	drawnCard.position = deck.position - player_hand.position
+	tween.tween_property(drawnCard, "position", Vector2(playerHandOffset, 0), 0.3)
 	player_hand.add_child(drawnCard)
 
 func _on_draw_player_pressed():
