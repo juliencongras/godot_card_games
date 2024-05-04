@@ -20,5 +20,10 @@ Card scene :
 
 Blackjack :
 - [ ] Reuse previous blackjack project
+- [ ] Add split
+- [ ] Add insurance
 
 Poker
+
+Misc :
+-[ ] Change SVG files to PNG for future proofing since Godot sometimes doesn't load SVG files properly
