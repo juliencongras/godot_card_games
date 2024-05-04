@@ -26,4 +26,4 @@ Blackjack :
 Poker
 
 Misc :
--[ ] Change SVG files to PNG for future proofing since Godot sometimes doesn't load SVG files properly
+-[x] Change SVG files to PNG for future proofing since Godot sometimes doesn't load SVG files properly
