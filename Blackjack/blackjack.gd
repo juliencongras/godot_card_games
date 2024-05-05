@@ -5,6 +5,7 @@ extends Node2D
 @onready var dealer_hand = $DealerHand
 @onready var playerScoreLabel = $PlayerScore
 @onready var dealerScoreLabel = $DealerScore
+@onready var double_down = $DoubleDown
 
 var firstTurn : bool = true
 var cardOffset : int = 70
@@ -21,6 +22,11 @@ func _ready():
 func _process(delta):
 	playerScoreLabel.text = "Player score : " + str(playerScore)
 	dealerScoreLabel.text = "Dealer score : " + str(dealerScore)
+	
+	if firstTurn:
+		double_down.visible = true
+	else:
+		double_down.visible = false
 
 func startBlackjackGame():
 	#Reset player and dealer scores
@@ -41,8 +47,7 @@ func startBlackjackGame():
 	deck.resetDeck()
 	deck.shuffleDeck()
 	
-	#Add two cards to the dealer and player hands
-	drawDealer()
+	#Add two cards to the player and one card to the dealer hands
 	drawPlayer()
 	drawDealer()
 	drawPlayer()
@@ -50,6 +55,7 @@ func startBlackjackGame():
 	firstTurn = true
 
 func drawDealer():
+	firstTurn = false
 	var drawnCard = deck.drawCard()
 	var tween = get_tree().create_tween()
 	
@@ -76,6 +82,7 @@ func drawDealer():
 		gameEnd()
 
 func drawPlayer():
+	firstTurn = false
 	var drawnCard = deck.drawCard()
 	var tween = get_tree().create_tween()
 	
@@ -131,3 +138,6 @@ func _on_dealer_turn_pressed():
 
 func _on_start_game_pressed():
 	startBlackjackGame()
+
+func _on_double_down_pressed():
+	pass # Replace with function body.

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://otnpys3ofrpk"]
+
+[ext_resource type="Script" path="res://Main menu/main_menu_button.gd" id="1_wh5eu"]
+
+[node name="MainMenuButton" type="Button"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 24.0
+offset_bottom = 24.0
+text = "Main menu"
+script = ExtResource("1_wh5eu")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

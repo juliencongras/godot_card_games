@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://bd4lfs4feudej"]
+[gd_scene load_steps=3 format=3 uid="uid://bd4lfs4feudej"]
 
-[node name="MainMenu" type="VBoxContainer"]
+[ext_resource type="Script" path="res://Main menu/main_menu.gd" id="1_in5vm"]
+[ext_resource type="PackedScene" uid="uid://cedg7j0dgq0wk" path="res://Blackjack/blackjack.tscn" id="2_gv6s0"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -14,11 +18,38 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_in5vm")
+blackjackScene = ExtResource("2_gv6s0")
 
-[node name="BlackjackButton" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -33.0
+offset_right = 40.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackjackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Blackjack"
 
-[node name="Button" type="Button" parent="."]
+[node name="PokerButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Poker"
+
+[node name="ObtionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/BlackjackButton" to="." method="_on_blackjack_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

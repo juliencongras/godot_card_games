@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cedg7j0dgq0wk"]
+[gd_scene load_steps=4 format=3 uid="uid://cedg7j0dgq0wk"]
 
 [ext_resource type="Script" path="res://Blackjack/blackjack.gd" id="1_ioltr"]
 [ext_resource type="PackedScene" uid="uid://cparxsups2vcv" path="res://Deck/deck.tscn" id="1_j0pps"]
+[ext_resource type="PackedScene" uid="uid://otnpys3ofrpk" path="res://Main menu/main_menu_button.tscn" id="3_njf0m"]
 
 [node name="Blackjack" type="Node2D"]
 script = ExtResource("1_ioltr")
@@ -38,33 +39,43 @@ position = Vector2(104, 104)
 
 [node name="DrawPlayer" type="Button" parent="."]
 offset_left = 664.0
-offset_top = 234.0
+offset_top = 226.0
 offset_right = 766.0
-offset_bottom = 265.0
+offset_bottom = 257.0
 text = "Draw player"
 
 [node name="DrawDealer" type="Button" parent="."]
 offset_left = 664.0
-offset_top = 274.0
+offset_top = 266.0
 offset_right = 767.0
-offset_bottom = 305.0
+offset_bottom = 297.0
 text = "Draw dealer"
 
 [node name="DealerTurn" type="Button" parent="."]
 offset_left = 664.0
-offset_top = 314.0
+offset_top = 306.0
 offset_right = 773.0
-offset_bottom = 345.0
+offset_bottom = 337.0
 text = "Dealer's turn"
 
 [node name="StartGame" type="Button" parent="."]
 offset_left = 664.0
-offset_top = 354.0
+offset_top = 346.0
 offset_right = 773.0
-offset_bottom = 385.0
+offset_bottom = 377.0
 text = "Start game"
+
+[node name="DoubleDown" type="Button" parent="."]
+offset_left = 664.0
+offset_top = 386.0
+offset_right = 773.0
+offset_bottom = 417.0
+text = "Double down"
+
+[node name="MainMenuButton" parent="." instance=ExtResource("3_njf0m")]
 
 [connection signal="pressed" from="DrawPlayer" to="." method="_on_draw_player_pressed"]
 [connection signal="pressed" from="DrawDealer" to="." method="_on_draw_dealer_pressed"]
 [connection signal="pressed" from="DealerTurn" to="." method="_on_dealer_turn_pressed"]
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="DoubleDown" to="." method="_on_double_down_pressed"]
