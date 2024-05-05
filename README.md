@@ -19,7 +19,7 @@ Card scene :
 - [x] Display card
 
 Blackjack :
-- [ ] Reuse previous blackjack project
+- [x] Reuse previous blackjack project
 - [ ] Add split
 - [ ] Add doubling
 - [ ] Add insurance
