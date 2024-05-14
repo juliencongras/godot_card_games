@@ -29,4 +29,4 @@ Poker
 
 Misc :
 - [x] Change SVG files to PNG for future proofing since Godot sometimes doesn't load SVG files properly
-- [ ] Add chips
+- [x] Add chips

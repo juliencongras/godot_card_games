@@ -1,3 +1,3 @@
 extends Node
 
-var chipsTotal : int = 0
+var chipsTotal : int = 100

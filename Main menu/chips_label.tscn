@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1822e1hx306p"]
+
+[ext_resource type="Script" path="res://Main menu/chips_label.gd" id="1_xv6u1"]
+
+[node name="Chips Label" type="Label"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Chips :"
+script = ExtResource("1_xv6u1")
