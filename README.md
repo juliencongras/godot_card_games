@@ -20,9 +20,9 @@ Card scene :
 
 Blackjack :
 - [x] Reuse previous blackjack project
-- [ ] Add betting
+- [x] Add betting
 - [ ] Add split
-- [ ] Add doubling
+- [x] Add doubling
 - [ ] Add insurance
 
 Poker

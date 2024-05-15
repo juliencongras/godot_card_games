@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmn5dfyh2w3ev"]
+
+[ext_resource type="Script" path="res://BettingWindow/betting_window.gd" id="1_ml52i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noxif"]
+
+[node name="BettingWindow" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -745.0
+offset_bottom = -462.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_noxif")
+script = ExtResource("1_ml52i")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 56.0
+offset_top = 40.0
+offset_right = 356.0
+offset_bottom = 63.0
+text = "How many chips would you like to bet?"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 221.0
+offset_top = 77.0
+offset_right = 266.0
+offset_bottom = 100.0
+text = "Chips"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 72.0
+offset_right = 213.0
+offset_bottom = 104.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 168.0
+offset_top = 112.0
+offset_right = 231.0
+offset_bottom = 143.0
+text = "OK"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

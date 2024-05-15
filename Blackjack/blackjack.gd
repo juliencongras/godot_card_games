@@ -6,6 +6,8 @@ extends Node2D
 @onready var playerScoreLabel = $PlayerScore
 @onready var dealerScoreLabel = $DealerScore
 @onready var double_down = $DoubleDown
+@onready var betting_window = $Control
+
 
 var firstTurn : bool = true
 var cardOffset : int = 70
@@ -121,7 +123,12 @@ func updatePlayerScore():
 	playerScore = updatedScore
 
 func gameEnd():
-	print("Game over")
+	if dealerScore == playerScore:
+		GameManager.chipsTotal += GameManager.chipsBet
+	elif dealerScore > 21 or (dealerScore < playerScore and playerScore < 22):
+		GameManager.chipsTotal += GameManager.chipsBet * 2
+	GameManager.chipsBet = 0
+	
 
 func _on_draw_player_pressed():
 	drawPlayer()
@@ -132,12 +139,18 @@ func _on_draw_dealer_pressed():
 func dealerTurn():
 	while dealerScore < 17:
 		drawDealer()
+	gameEnd()
 
 func _on_dealer_turn_pressed():
 	dealerTurn()
 
 func _on_start_game_pressed():
 	startBlackjackGame()
+	betting_window.visible = true
 
 func _on_double_down_pressed():
-	pass # Replace with function body.
+	var initialBet = GameManager.chipsBet
+	GameManager.chipsBet *= 2
+	GameManager.chipsTotal -= initialBet
+	drawPlayer()
+	

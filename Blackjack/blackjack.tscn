@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cedg7j0dgq0wk"]
+[gd_scene load_steps=6 format=3 uid="uid://cedg7j0dgq0wk"]
 
 [ext_resource type="Script" path="res://Blackjack/blackjack.gd" id="1_ioltr"]
 [ext_resource type="PackedScene" uid="uid://cparxsups2vcv" path="res://Deck/deck.tscn" id="1_j0pps"]
+[ext_resource type="PackedScene" uid="uid://bmn5dfyh2w3ev" path="res://BettingWindow/betting_window.tscn" id="2_1nybl"]
 [ext_resource type="PackedScene" uid="uid://otnpys3ofrpk" path="res://Main menu/main_menu_button.tscn" id="3_njf0m"]
 [ext_resource type="PackedScene" uid="uid://b1822e1hx306p" path="res://Main menu/chips_label.tscn" id="4_ajmje"]
 
@@ -78,6 +79,21 @@ text = "Double down"
 [node name="Chips Label" parent="." instance=ExtResource("4_ajmje")]
 offset_left = 1092.0
 offset_right = 1144.0
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 383.0
+offset_top = 231.0
+offset_right = 787.0
+offset_bottom = 434.0
+size_flags_horizontal = 4
+
+[node name="BettingWindow" parent="Control" instance=ExtResource("2_1nybl")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
 
 [connection signal="pressed" from="DrawPlayer" to="." method="_on_draw_player_pressed"]
 [connection signal="pressed" from="DrawDealer" to="." method="_on_draw_dealer_pressed"]

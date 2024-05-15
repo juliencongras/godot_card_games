@@ -49,6 +49,13 @@ text = "Quit"
 [node name="Chips Label" parent="." instance=ExtResource("3_newnh")]
 layout_mode = 0
 anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 52.0
+offset_bottom = 23.0
+grow_horizontal = 1
 
 [connection signal="pressed" from="VBoxContainer/BlackjackButton" to="." method="_on_blackjack_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
