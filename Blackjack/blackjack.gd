@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var deck = $Deck
-@onready var player_hand = $PlayerHand
-@onready var player_split_hand = $PlayerSplitHand
+@onready var player_hand = $FirstPlayerHandContainer/PlayerHand
+@onready var player_split_hand = $SecondPlayerHandContainer/PlayerHand
 @onready var dealer_hand = $DealerHand
 @onready var playerScoreLabel = $PlayerScore
 @onready var dealerScoreLabel = $DealerScore
@@ -14,6 +14,7 @@ extends Node2D
 var firstTurn : bool = true
 var cardOffset : int = 70
 var playerHandOffset : int = 0
+var playerSplitHandOffet : int = 0
 var dealerHandOffset : int = 0
 var playerScore : int
 var dealerScore : int
@@ -44,10 +45,13 @@ func startBlackjackGame():
 	
 	#Reset hands offset
 	playerHandOffset = 0
+	playerSplitHandOffet = 0
 	dealerHandOffset = 0
 	
 	#Empty dealer and player hands
 	for card in player_hand.get_children():
+		card.free()
+	for card in player_split_hand.get_children():
 		card.free()
 	for card in dealer_hand.get_children():
 		card.free()
@@ -57,9 +61,9 @@ func startBlackjackGame():
 	deck.shuffleDeck()
 	
 	#Add two cards to the player and one card to the dealer hands
-	drawPlayer()
+	drawPlayer(player_hand, playerHandOffset)
 	drawDealer()
-	drawPlayer()
+	drawPlayer(player_hand, playerHandOffset)
 	
 	firstTurn = true
 
@@ -92,7 +96,7 @@ func drawDealer():
 	if dealerScore > 21:
 		gameEnd()
 
-func drawPlayer():
+func drawPlayer(targetHand, targetOffset):
 	firstTurn = false
 	var drawnCard = deck.drawCard()
 	var tween = get_tree().create_tween()
@@ -104,10 +108,13 @@ func drawPlayer():
 	if drawnCard.cardValue == 1:
 		drawnCard.cardValue = 11
 	
-	drawnCard.position = deck.position - player_hand.position
-	tween.tween_property(drawnCard, "position", Vector2(playerHandOffset, 0), 0.3)
-	player_hand.add_child(drawnCard)
-	playerHandOffset += cardOffset
+	drawnCard.position = deck.position - targetHand.position
+	tween.tween_property(drawnCard, "position", Vector2(targetOffset, 0), 0.3)
+	targetHand.add_child(drawnCard)
+	if targetOffset == playerHandOffset:
+		playerHandOffset += cardOffset
+	elif targetOffset == playerSplitHandOffet:
+		playerSplitHandOffet += cardOffset
 	
 	updatePlayerScore()
 	
@@ -140,12 +147,11 @@ func gameEnd():
 		GameManager.chipsTotal += GameManager.chipsBet * 2
 	GameManager.chipsBet = 0
 	
-
 func _on_draw_player_pressed():
-	drawPlayer()
+	drawPlayer(player_hand, playerHandOffset)
 
-func _on_draw_dealer_pressed():
-	drawDealer()
+func _on_draw_player_split_pressed():
+	drawPlayer(player_split_hand, playerSplitHandOffet)
 
 func dealerTurn():
 	while dealerScore < 17:
@@ -163,7 +169,7 @@ func _on_double_down_pressed():
 	var initialBet = GameManager.chipsBet
 	GameManager.chipsBet *= 2
 	GameManager.chipsTotal -= initialBet
-	drawPlayer()
+	drawPlayer(player_hand, playerHandOffset)
 
 func _on_split_cards_pressed():
 	var targetSplitCard = player_hand.get_children()[1]

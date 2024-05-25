@@ -10,34 +10,59 @@
 script = ExtResource("1_ioltr")
 
 [node name="Deck" parent="." instance=ExtResource("1_j0pps")]
-position = Vector2(578, 320)
+position = Vector2(578, 264)
 
 [node name="DealerRule" type="Label" parent="."]
 offset_left = 470.0
-offset_top = 163.0
+offset_top = 147.0
 offset_right = 683.0
-offset_bottom = 186.0
+offset_bottom = 170.0
 text = "Dealer stands starting at 17"
 
 [node name="PlayerScore" type="Label" parent="."]
 offset_left = 816.0
-offset_top = 312.0
+offset_top = 256.0
 offset_right = 932.0
-offset_bottom = 335.0
+offset_bottom = 279.0
 text = "Player score : 0"
 
 [node name="DealerScore" type="Label" parent="."]
 offset_left = 816.0
-offset_top = 288.0
+offset_top = 232.0
 offset_right = 935.0
-offset_bottom = 311.0
+offset_bottom = 255.0
 text = "Dealer score : 0"
 
-[node name="PlayerHand" type="Node2D" parent="."]
+[node name="FirstPlayerHandContainer" type="Node2D" parent="."]
+
+[node name="PlayerHand" type="Node2D" parent="FirstPlayerHandContainer"]
 position = Vector2(104, 528)
 
-[node name="PlayerSplitHand" type="Node2D" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="FirstPlayerHandContainer"]
+offset_left = 40.0
+offset_top = 384.0
+offset_right = 80.0
+offset_bottom = 424.0
+
+[node name="DrawPlayer" type="Button" parent="FirstPlayerHandContainer/HBoxContainer"]
+layout_mode = 2
+text = "Hit"
+
+[node name="SecondPlayerHandContainer" type="Node2D" parent="."]
+visible = false
+
+[node name="PlayerHand" type="Node2D" parent="SecondPlayerHandContainer"]
 position = Vector2(632, 528)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SecondPlayerHandContainer"]
+offset_left = 608.0
+offset_top = 384.0
+offset_right = 648.0
+offset_bottom = 424.0
+
+[node name="DrawPlayer" type="Button" parent="SecondPlayerHandContainer/HBoxContainer"]
+layout_mode = 2
+text = "Hit"
 
 [node name="DealerHand" type="Node2D" parent="."]
 position = Vector2(104, 104)
@@ -50,25 +75,18 @@ offset_right = 1144.0
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="."]
 offset_left = 656.0
-offset_top = 219.0
+offset_top = 163.0
 offset_right = 767.0
-offset_bottom = 425.0
+offset_bottom = 369.0
+alignment = 1
 
 [node name="StartGame" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
 text = "Start game"
 
-[node name="DrawPlayer" type="Button" parent="ButtonsContainer"]
-layout_mode = 2
-text = "Draw player"
-
-[node name="DrawDealer" type="Button" parent="ButtonsContainer"]
-layout_mode = 2
-text = "Draw dealer"
-
 [node name="DealerTurn" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
-text = "Dealer's turn"
+text = "Stand"
 
 [node name="DoubleDown" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
@@ -93,9 +111,9 @@ layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
 
+[connection signal="pressed" from="FirstPlayerHandContainer/HBoxContainer/DrawPlayer" to="." method="_on_draw_player_pressed"]
+[connection signal="pressed" from="SecondPlayerHandContainer/HBoxContainer/DrawPlayer" to="." method="_on_draw_player_split_pressed"]
 [connection signal="pressed" from="ButtonsContainer/StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="ButtonsContainer/DrawPlayer" to="." method="_on_draw_player_pressed"]
-[connection signal="pressed" from="ButtonsContainer/DrawDealer" to="." method="_on_draw_dealer_pressed"]
 [connection signal="pressed" from="ButtonsContainer/DealerTurn" to="." method="_on_dealer_turn_pressed"]
 [connection signal="pressed" from="ButtonsContainer/DoubleDown" to="." method="_on_double_down_pressed"]
 [connection signal="pressed" from="ButtonsContainer/SplitCards" to="." method="_on_split_cards_pressed"]
