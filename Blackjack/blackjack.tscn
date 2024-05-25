@@ -36,6 +36,9 @@ text = "Dealer score : 0"
 [node name="PlayerHand" type="Node2D" parent="."]
 position = Vector2(104, 528)
 
+[node name="PlayerSplitHand" type="Node2D" parent="."]
+position = Vector2(632, 528)
+
 [node name="DealerHand" type="Node2D" parent="."]
 position = Vector2(104, 104)
 
