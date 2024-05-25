@@ -2,6 +2,7 @@ extends Node2D
 
 var cardValue : int
 var cardSuit : String
+var originalCardValue : int
 var cardSpritePath : String = "res://Assets/Cards/"
 var cardSprite : String
 @onready var sprite_2d = $Sprite2D

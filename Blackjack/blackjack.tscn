@@ -14,9 +14,9 @@ position = Vector2(578, 320)
 
 [node name="DealerRule" type="Label" parent="."]
 offset_left = 470.0
-offset_top = 203.0
+offset_top = 163.0
 offset_right = 683.0
-offset_bottom = 226.0
+offset_bottom = 186.0
 text = "Dealer stands starting at 17"
 
 [node name="PlayerScore" type="Label" parent="."]
@@ -39,46 +39,41 @@ position = Vector2(104, 528)
 [node name="DealerHand" type="Node2D" parent="."]
 position = Vector2(104, 104)
 
-[node name="DrawPlayer" type="Button" parent="."]
-offset_left = 664.0
-offset_top = 226.0
-offset_right = 766.0
-offset_bottom = 257.0
-text = "Draw player"
-
-[node name="DrawDealer" type="Button" parent="."]
-offset_left = 664.0
-offset_top = 266.0
-offset_right = 767.0
-offset_bottom = 297.0
-text = "Draw dealer"
-
-[node name="DealerTurn" type="Button" parent="."]
-offset_left = 664.0
-offset_top = 306.0
-offset_right = 773.0
-offset_bottom = 337.0
-text = "Dealer's turn"
-
-[node name="StartGame" type="Button" parent="."]
-offset_left = 664.0
-offset_top = 346.0
-offset_right = 773.0
-offset_bottom = 377.0
-text = "Start game"
-
-[node name="DoubleDown" type="Button" parent="."]
-offset_left = 664.0
-offset_top = 386.0
-offset_right = 773.0
-offset_bottom = 417.0
-text = "Double down"
-
 [node name="MainMenuButton" parent="." instance=ExtResource("3_njf0m")]
 
 [node name="Chips Label" parent="." instance=ExtResource("4_ajmje")]
 offset_left = 1092.0
 offset_right = 1144.0
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="."]
+offset_left = 656.0
+offset_top = 219.0
+offset_right = 767.0
+offset_bottom = 425.0
+
+[node name="StartGame" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Start game"
+
+[node name="DrawPlayer" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Draw player"
+
+[node name="DrawDealer" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Draw dealer"
+
+[node name="DealerTurn" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Dealer's turn"
+
+[node name="DoubleDown" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Double down"
+
+[node name="SplitCards" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Split"
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -95,8 +90,9 @@ layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
 
-[connection signal="pressed" from="DrawPlayer" to="." method="_on_draw_player_pressed"]
-[connection signal="pressed" from="DrawDealer" to="." method="_on_draw_dealer_pressed"]
-[connection signal="pressed" from="DealerTurn" to="." method="_on_dealer_turn_pressed"]
-[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="DoubleDown" to="." method="_on_double_down_pressed"]
+[connection signal="pressed" from="ButtonsContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="ButtonsContainer/DrawPlayer" to="." method="_on_draw_player_pressed"]
+[connection signal="pressed" from="ButtonsContainer/DrawDealer" to="." method="_on_draw_dealer_pressed"]
+[connection signal="pressed" from="ButtonsContainer/DealerTurn" to="." method="_on_dealer_turn_pressed"]
+[connection signal="pressed" from="ButtonsContainer/DoubleDown" to="." method="_on_double_down_pressed"]
+[connection signal="pressed" from="ButtonsContainer/SplitCards" to="." method="_on_split_cards_pressed"]

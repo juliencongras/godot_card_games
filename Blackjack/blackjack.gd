@@ -5,7 +5,8 @@ extends Node2D
 @onready var dealer_hand = $DealerHand
 @onready var playerScoreLabel = $PlayerScore
 @onready var dealerScoreLabel = $DealerScore
-@onready var double_down = $DoubleDown
+@onready var double_down = $ButtonsContainer/DoubleDown
+@onready var split_cards = $ButtonsContainer/SplitCards
 @onready var betting_window = $Control
 
 
@@ -27,8 +28,13 @@ func _process(delta):
 	
 	if firstTurn:
 		double_down.visible = true
+		if player_hand.get_child_count() > 0 and player_hand.get_children()[0].originalCardValue == player_hand.get_children()[1].originalCardValue:
+			split_cards.visible = true
+		else:
+			split_cards.visible = false
 	else:
 		double_down.visible = false
+		split_cards.visible = false
 
 func startBlackjackGame():
 	#Reset player and dealer scores
@@ -61,6 +67,8 @@ func drawDealer():
 	var drawnCard = deck.drawCard()
 	var tween = get_tree().create_tween()
 	
+	drawnCard.originalCardValue = drawnCard.cardValue
+	
 	if drawnCard.cardValue > 10:
 		drawnCard.cardValue = 10
 	if drawnCard.cardValue == 1:
@@ -87,6 +95,8 @@ func drawPlayer():
 	firstTurn = false
 	var drawnCard = deck.drawCard()
 	var tween = get_tree().create_tween()
+	
+	drawnCard.originalCardValue = drawnCard.cardValue
 	
 	if drawnCard.cardValue > 10:
 		drawnCard.cardValue = 10
@@ -153,4 +163,6 @@ func _on_double_down_pressed():
 	GameManager.chipsBet *= 2
 	GameManager.chipsTotal -= initialBet
 	drawPlayer()
-	
+
+func _on_split_cards_pressed():
+	pass # Replace with function body.
