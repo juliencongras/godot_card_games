@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cedg7j0dgq0wk"]
+[gd_scene load_steps=7 format=3 uid="uid://cedg7j0dgq0wk"]
 
 [ext_resource type="Script" path="res://Blackjack/blackjack.gd" id="1_ioltr"]
 [ext_resource type="PackedScene" uid="uid://cparxsups2vcv" path="res://Deck/deck.tscn" id="1_j0pps"]
 [ext_resource type="PackedScene" uid="uid://bmn5dfyh2w3ev" path="res://BettingWindow/betting_window.tscn" id="2_1nybl"]
 [ext_resource type="PackedScene" uid="uid://otnpys3ofrpk" path="res://Main menu/main_menu_button.tscn" id="3_njf0m"]
 [ext_resource type="PackedScene" uid="uid://b1822e1hx306p" path="res://Main menu/chips_label.tscn" id="4_ajmje"]
+[ext_resource type="PackedScene" uid="uid://c14fu7n2ot1tb" path="res://Blackjack/blackjack_player_hand.tscn" id="6_c086j"]
 
 [node name="Blackjack" type="Node2D"]
 script = ExtResource("1_ioltr")
@@ -32,37 +33,6 @@ offset_top = 232.0
 offset_right = 935.0
 offset_bottom = 255.0
 text = "Dealer score : 0"
-
-[node name="FirstPlayerHandContainer" type="Node2D" parent="."]
-
-[node name="PlayerHand" type="Node2D" parent="FirstPlayerHandContainer"]
-position = Vector2(104, 528)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="FirstPlayerHandContainer"]
-offset_left = 40.0
-offset_top = 384.0
-offset_right = 80.0
-offset_bottom = 424.0
-
-[node name="DrawPlayer" type="Button" parent="FirstPlayerHandContainer/HBoxContainer"]
-layout_mode = 2
-text = "Hit"
-
-[node name="SecondPlayerHandContainer" type="Node2D" parent="."]
-visible = false
-
-[node name="PlayerHand" type="Node2D" parent="SecondPlayerHandContainer"]
-position = Vector2(632, 528)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SecondPlayerHandContainer"]
-offset_left = 608.0
-offset_top = 384.0
-offset_right = 648.0
-offset_bottom = 424.0
-
-[node name="DrawPlayer" type="Button" parent="SecondPlayerHandContainer/HBoxContainer"]
-layout_mode = 2
-text = "Hit"
 
 [node name="DealerHand" type="Node2D" parent="."]
 position = Vector2(104, 104)
@@ -111,8 +81,9 @@ layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
 
-[connection signal="pressed" from="FirstPlayerHandContainer/HBoxContainer/DrawPlayer" to="." method="_on_draw_player_pressed"]
-[connection signal="pressed" from="SecondPlayerHandContainer/HBoxContainer/DrawPlayer" to="." method="_on_draw_player_split_pressed"]
+[node name="BlackjackPlayerHand" parent="." instance=ExtResource("6_c086j")]
+position = Vector2(25, 412)
+
 [connection signal="pressed" from="ButtonsContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonsContainer/DealerTurn" to="." method="_on_dealer_turn_pressed"]
 [connection signal="pressed" from="ButtonsContainer/DoubleDown" to="." method="_on_double_down_pressed"]
