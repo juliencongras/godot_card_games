@@ -8,6 +8,7 @@ var handMarginX : int = 60
 var handMarginY : int = 120
 var handScore : int = 0
 var handOffset : int = 0
+var handBet : int = 0
 
 func _ready():
 	player_hand.position = Vector2(handMarginX, handMarginY)
@@ -15,8 +16,8 @@ func _ready():
 func _process(delta):
 	hand_score_label.text = "Hand score: " + str(handScore)
 
-func setHandBet(chips):
-	chips_bet.text = "Chips bet: " + str(chips)
+func setHandBet():
+	chips_bet.text = "Chips bet: " + str(GameManager.chipsBet)
 
 func updateHandScore():
 	var totalCardScore : int = 0

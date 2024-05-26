@@ -9,11 +9,14 @@ extends Node2D
 @onready var blackjack_player_hand_container = $BlackjackPlayerHand
 @onready var blackjack_player_hand = $BlackjackPlayerHand/PlayerHand
 
+@export var split_blackjack_player_hand_container : PackedScene
+
 var firstTurn : bool = true
 var cardOffset : int = 70
 var dealerHandOffset : int = 0
 var playerScore : int
 var dealerScore : int
+var splitPlayerHand
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -101,8 +104,8 @@ func drawPlayer(targetHand, targetOffset, handParent):
 	if drawnCard.cardValue == 1:
 		drawnCard.cardValue = 11
 	
-	drawnCard.position = deck.position - targetHand.position
-	tween.tween_property(drawnCard, "position", Vector2(handParent.handOffset, 0), 0.3)
+	drawnCard.position = deck.position - (handParent.position + targetHand.position)
+	tween.tween_property(drawnCard, "position", Vector2(targetOffset, 0), 0.3)
 	targetHand.add_child(drawnCard)
 	
 	handParent.updateHandScore()
@@ -153,10 +156,20 @@ func _on_double_down_pressed():
 	drawPlayer(blackjack_player_hand, blackjack_player_hand_container.handOffset, blackjack_player_hand_container)
 
 func _on_split_cards_pressed():
-	pass
-	#second_player_hand_container.visible = true
-	#var targetSplitCard = player_hand.get_children()[1]
-	#player_hand.remove_child(targetSplitCard)
-	#player_split_hand.add_child(targetSplitCard)
-	#updatePlayerScore()
-	# Need to update on hands offset
+	splitPlayerHand = split_blackjack_player_hand_container.instantiate()
+	splitPlayerHand.position = Vector2(550, blackjack_player_hand_container.position.y)
+	add_child(splitPlayerHand)
+	
+	var targetSplitCard = blackjack_player_hand.get_children()[1]
+	blackjack_player_hand.remove_child(targetSplitCard)
+	targetSplitCard.position = Vector2.ZERO
+	splitPlayerHand.player_hand.add_child(targetSplitCard)
+	
+	blackjack_player_hand_container.updateHandScore()
+	splitPlayerHand.updateHandScore()
+	
+	blackjack_player_hand_container.handOffset -= cardOffset
+	splitPlayerHand.handOffset += cardOffset
+	
+	GameManager.chipsTotal -= GameManager.chipsBet
+	splitPlayerHand.setHandBet()

@@ -9,6 +9,7 @@
 
 [node name="Blackjack" type="Node2D"]
 script = ExtResource("1_ioltr")
+split_blackjack_player_hand_container = ExtResource("6_c086j")
 
 [node name="Deck" parent="." instance=ExtResource("1_j0pps")]
 position = Vector2(578, 264)
