@@ -14,7 +14,6 @@ extends Node2D
 var firstTurn : bool = true
 var cardOffset : int = 70
 var dealerHandOffset : int = 0
-var playerScore : int
 var dealerScore : int
 var splitPlayerHand
 
@@ -37,9 +36,13 @@ func _process(delta):
 		split_cards.visible = false
 
 func startBlackjackGame():
+	#Clear player hand group
+	for i in get_tree().get_nodes_in_group("playerHand"):
+		i.remove_from_group("playerHand")
+		if i != blackjack_player_hand_container:
+			i.queue_free()
 	
-	#Reset player and dealer scores
-	playerScore = 0
+	#Reset dealer scores
 	dealerScore = 0
 	
 	#Reset hands offset
@@ -56,10 +59,15 @@ func startBlackjackGame():
 	deck.resetDeck()
 	deck.shuffleDeck()
 	
+	#Reset hit button from player's hands
+	$BlackjackPlayerHand/HitButton.disabled = false
+	
 	#Add two cards to the player and one card to the dealer hands
 	blackjack_player_hand_container.drawCardToHand()
 	drawDealer()
 	blackjack_player_hand_container.drawCardToHand()
+	
+	blackjack_player_hand_container.add_to_group("playerHand")
 	
 	firstTurn = true
 
@@ -127,15 +135,12 @@ func updateDealerScore():
 	dealerScore = updatedScore
 
 func gameEnd():
-	if dealerScore == playerScore:
-		GameManager.chipsTotal += GameManager.chipsBet
-	elif dealerScore > 21 or (dealerScore < playerScore and playerScore < 22):
-		GameManager.chipsTotal += GameManager.chipsBet * 2
+	for i in get_tree().get_nodes_in_group("playerHand"):
+		if dealerScore == i.handScore:
+			GameManager.chipsTotal += GameManager.chipsBet
+		elif dealerScore > 21 or (dealerScore < i.handScore and i.handScore < 22):
+			GameManager.chipsTotal += GameManager.chipsBet * 2
 	GameManager.chipsBet = 0
-	
-func _on_draw_player_split_pressed():
-	pass
-	# Need to create a second player hand
 
 func dealerTurn():
 	while dealerScore < 17:
@@ -154,6 +159,7 @@ func _on_double_down_pressed():
 	GameManager.chipsBet *= 2
 	GameManager.chipsTotal -= initialBet
 	drawPlayer(blackjack_player_hand, blackjack_player_hand_container.handOffset, blackjack_player_hand_container)
+	$BlackjackPlayerHand/HitButton.disabled = true
 
 func _on_split_cards_pressed():
 	splitPlayerHand = split_blackjack_player_hand_container.instantiate()
