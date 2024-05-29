@@ -126,7 +126,12 @@ func drawPlayer(targetHand, targetOffset, handParent):
 				break
 	
 	if handParent.handScore > 21:
-		gameEnd()
+		$BlackjackPlayerHand/HitButton.disabled = true
+		var numberNodesInGroup : int = 0
+		for i in get_tree().get_nodes_in_group("playerHand"):
+			numberNodesInGroup += 1
+		if numberNodesInGroup < 2:
+			gameEnd()
 
 func updateDealerScore():
 	var updatedScore : int = 0
