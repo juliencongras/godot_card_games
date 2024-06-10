@@ -23,9 +23,15 @@ Blackjack :
 - [x] Add betting
 - [x] Add split
 - [x] Add doubling
-- [ ] Add insurance
 
 Poker
+
+Solitaire :
+- [ ] Add the deck
+- [ ] Add playing field (columns)
+- [ ] Add aces container (where to put the cards starting with aces)
+- [ ] Add column stacking logic for cards
+- [ ] Being able to drag cards to different places
 
 Misc :
 - [x] Change SVG files to PNG for future proofing since Godot sometimes doesn't load SVG files properly

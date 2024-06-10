@@ -38,6 +38,10 @@ text = "Blackjack"
 layout_mode = 2
 text = "Poker"
 
+[node name="SolitaireButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Solitaire"
+
 [node name="ObtionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Options"
