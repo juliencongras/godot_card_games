@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://5xadxg0ru2sa"]
+[gd_scene load_steps=5 format=3 uid="uid://5xadxg0ru2sa"]
+
+[ext_resource type="Script" path="res://Solitaire/solitaire.gd" id="1_1tu3d"]
+[ext_resource type="PackedScene" uid="uid://otnpys3ofrpk" path="res://Main menu/main_menu_button.tscn" id="1_82cn1"]
+[ext_resource type="PackedScene" uid="uid://cparxsups2vcv" path="res://Deck/deck.tscn" id="2_k117t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ejsl"]
+size = Vector2(119, 167)
 
 [node name="Solitaire" type="Node2D"]
+script = ExtResource("1_1tu3d")
+
+[node name="MainMenuButton" parent="." instance=ExtResource("1_82cn1")]
+offset_right = 112.0
+offset_bottom = 47.0
+
+[node name="Deck" parent="." instance=ExtResource("2_k117t")]
+position = Vector2(190, 100)
+
+[node name="MouseDetection" type="Area2D" parent="Deck"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/MouseDetection"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_5ejsl")
+
+[node name="DrawRecipient" type="Node2D" parent="."]
+position = Vector2(344, 100)
+
+[connection signal="input_event" from="Deck/MouseDetection" to="." method="_on_mouse_detection_input_event"]
+[connection signal="mouse_entered" from="Deck/MouseDetection" to="." method="_on_mouse_dectection_mouse_entered"]
+[connection signal="mouse_exited" from="Deck/MouseDetection" to="." method="_on_mouse_dectection_mouse_exited"]

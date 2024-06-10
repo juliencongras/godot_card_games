@@ -4,7 +4,7 @@ Cards obtained from https://www.me.uk/cards/.
 
 ## Todo:
 Main menu :
-- [ ] Menu list of all card games
+- [x] Menu list of all card games
 - [ ] Options menu
 
 Reusable deck scene :
@@ -27,7 +27,8 @@ Blackjack :
 Poker
 
 Solitaire :
-- [ ] Add the deck
+- [x] Add the deck
+- [x] Add card drawn recipient for deck
 - [ ] Add playing field (columns)
 - [ ] Add aces container (where to put the cards starting with aces)
 - [ ] Add column stacking logic for cards

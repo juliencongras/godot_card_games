@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var cardScene : PackedScene
+@onready var deck_sprite = $DeckSprite
 
 var deckContent : Array = [
 	"h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "h10", "h11", "h12", "h13",  

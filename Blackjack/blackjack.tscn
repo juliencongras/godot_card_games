@@ -39,10 +39,14 @@ text = "Dealer score : 0"
 position = Vector2(104, 104)
 
 [node name="MainMenuButton" parent="." instance=ExtResource("3_njf0m")]
+offset_right = 112.0
+offset_bottom = 47.0
 
 [node name="Chips Label" parent="." instance=ExtResource("4_ajmje")]
-offset_left = 1092.0
-offset_right = 1144.0
+offset_left = 1084.0
+offset_top = 16.0
+offset_right = 1136.0
+offset_bottom = 39.0
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="."]
 offset_left = 656.0
