@@ -13,12 +13,13 @@ func shuffleDeck():
 	deckContent.shuffle()
 
 func drawCard():
-	var drawnCard = deckContent.pop_front()
-	var cardSceneInstance = cardScene.instantiate()
-	cardSceneInstance.cardSprite = drawnCard
-	cardSceneInstance.cardSuit = drawnCard[0]
-	cardSceneInstance.cardValue = int(drawnCard.erase(0, 1))
-	return cardSceneInstance
+	if deckContent.size() > 0:
+		var drawnCard = deckContent.pop_front()
+		var cardSceneInstance = cardScene.instantiate()
+		cardSceneInstance.cardSprite = drawnCard
+		cardSceneInstance.cardSuit = drawnCard[0]
+		cardSceneInstance.cardValue = int(drawnCard.erase(0, 1))
+		return cardSceneInstance
 
 func resetDeck():
 	deckContent = [

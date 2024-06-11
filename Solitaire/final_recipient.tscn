@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://31rfvwhmawpg"]
+
+[ext_resource type="Script" path="res://Solitaire/final_recipient.gd" id="1_sptvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pa5w"]
+size = Vector2(119, 167)
+
+[node name="FinalRecipient" type="Node2D"]
+script = ExtResource("1_sptvy")
+
+[node name="CardDetection" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDetection"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_2pa5w")
+
+[connection signal="area_entered" from="CardDetection" to="." method="_on_card_detection_area_entered"]
+[connection signal="area_exited" from="CardDetection" to="." method="_on_card_detection_area_exited"]
+[connection signal="input_event" from="CardDetection" to="." method="_on_card_detection_input_event"]
