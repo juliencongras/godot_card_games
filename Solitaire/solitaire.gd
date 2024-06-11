@@ -27,6 +27,7 @@ func drawFromDeck():
 			deck.deckContent.append(str(card.cardSuit, card.cardValue))
 			card.queue_free()
 	var drawnCard = deck.drawCard()
+	drawnCard.solitaireMode = true
 	draw_recipient.add_child(drawnCard)
 	if deck.deckContent.size() == 0:
 		deck.deck_sprite.visible = false

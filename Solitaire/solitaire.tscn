@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://5xadxg0ru2sa"]
+[gd_scene load_steps=6 format=3 uid="uid://5xadxg0ru2sa"]
 
 [ext_resource type="Script" path="res://Solitaire/solitaire.gd" id="1_1tu3d"]
 [ext_resource type="PackedScene" uid="uid://otnpys3ofrpk" path="res://Main menu/main_menu_button.tscn" id="1_82cn1"]
 [ext_resource type="PackedScene" uid="uid://cparxsups2vcv" path="res://Deck/deck.tscn" id="2_k117t"]
+[ext_resource type="PackedScene" uid="uid://cfgooapmmmynt" path="res://Solitaire/column.tscn" id="4_l4i03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ejsl"]
 size = Vector2(119, 167)
@@ -25,6 +26,39 @@ shape = SubResource("RectangleShape2D_5ejsl")
 
 [node name="DrawRecipient" type="Node2D" parent="."]
 position = Vector2(344, 100)
+
+[node name="FinalRecipientH" type="Node2D" parent="."]
+position = Vector2(656, 100)
+
+[node name="FinalRecipientC" type="Node2D" parent="."]
+position = Vector2(784, 100)
+
+[node name="FinalRecipientD" type="Node2D" parent="."]
+position = Vector2(912, 100)
+
+[node name="FinalRecipientS" type="Node2D" parent="."]
+position = Vector2(1040, 100)
+
+[node name="Column" parent="." instance=ExtResource("4_l4i03")]
+position = Vector2(147, 319)
+
+[node name="Column2" parent="." instance=ExtResource("4_l4i03")]
+position = Vector2(291, 319)
+
+[node name="Column3" parent="." instance=ExtResource("4_l4i03")]
+position = Vector2(435, 319)
+
+[node name="Column4" parent="." instance=ExtResource("4_l4i03")]
+position = Vector2(579, 319)
+
+[node name="Column5" parent="." instance=ExtResource("4_l4i03")]
+position = Vector2(723, 319)
+
+[node name="Column6" parent="." instance=ExtResource("4_l4i03")]
+position = Vector2(867, 319)
+
+[node name="Column7" parent="." instance=ExtResource("4_l4i03")]
+position = Vector2(1011, 319)
 
 [connection signal="input_event" from="Deck/MouseDetection" to="." method="_on_mouse_detection_input_event"]
 [connection signal="mouse_entered" from="Deck/MouseDetection" to="." method="_on_mouse_dectection_mouse_entered"]

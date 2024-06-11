@@ -29,7 +29,7 @@ Poker
 Solitaire :
 - [x] Add the deck
 - [x] Add card drawn recipient for deck
-- [ ] Add playing field (columns)
+- [ ] Add playing field (7 columns)
 - [ ] Add aces container (where to put the cards starting with aces)
 - [ ] Add column stacking logic for cards
 - [ ] Being able to drag cards to different places
