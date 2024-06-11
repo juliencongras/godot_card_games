@@ -7,7 +7,9 @@ var cardSpritePath : String = "res://Assets/Cards/"
 var cardSprite : String
 var solitaireMode : bool = false
 var originalPosition : Vector2
-var cardGrabbed = false
+var cardGrabbed : bool = false
+var cardHidden : bool = false
+var cardColor : String
 
 @onready var sprite_2d = $Sprite2D
 @onready var mouse_detection = $MouseDetection
@@ -16,7 +18,17 @@ var cardGrabbed = false
 func _ready():
 	originalPosition = position
 	mouse_detection.visible = solitaireMode
-	sprite_2d.texture = load(cardSpritePath + cardSprite + ".png")
+	
+	if cardSuit == "c" or "s":
+		cardColor = "black"
+	elif cardSuit == "h" or "d":
+		cardColor = "red"
+	
+	if cardHidden:
+		sprite_2d.texture = load(cardSpritePath + "1B.png")
+	else:
+		sprite_2d.texture = load(cardSpritePath + cardSprite + ".png")
+		
 	sprite_2d.scale = Vector2(0.5, 0.5)
 
 func _process(delta):
@@ -27,7 +39,7 @@ func _process(delta):
 			position = originalPosition
 
 func _on_mouse_detection_input_event(viewport, event, shape_idx):
-	if Input.is_action_pressed("Click"):
+	if Input.is_action_just_pressed("Click") and get_parent().get_child(-1) == self:
 		cardGrabbed = true
 	elif Input.is_action_just_released("Click"):
 		cardGrabbed = false

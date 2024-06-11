@@ -11,6 +11,7 @@ script = ExtResource("1_37m4i")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="MouseDetection" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetection"]
 position = Vector2(-0.5, -0.5)

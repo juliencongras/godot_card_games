@@ -33,3 +33,6 @@ func drawFromDeck():
 		deck.deck_sprite.visible = false
 	else:
 		deck.deck_sprite.visible = true
+
+func startGame():
+	pass
