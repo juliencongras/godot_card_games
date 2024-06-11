@@ -14,7 +14,7 @@ func _ready():
 	player_hand.position = Vector2(handMarginX, handMarginY)
 	self.add_to_group("playerHand")
 
-func _process(delta):
+func _process(_delta):
 	hand_score_label.text = "Hand score: " + str(handScore)
 
 func setHandBet():

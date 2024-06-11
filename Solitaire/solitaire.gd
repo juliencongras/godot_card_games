@@ -2,13 +2,14 @@ extends Node2D
 
 @onready var deck = $Deck
 @onready var draw_recipient = $DrawRecipient
+@onready var final_recipients = $FinalRecipients
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	deck.shuffleDeck()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_mouse_dectection_mouse_entered():
@@ -17,7 +18,7 @@ func _on_mouse_dectection_mouse_entered():
 func _on_mouse_dectection_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-func _on_mouse_detection_input_event(viewport, event, shape_idx):
+func _on_mouse_detection_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("Click"):
 		drawFromDeck()
 
@@ -36,3 +37,7 @@ func drawFromDeck():
 
 func startGame():
 	pass
+
+func _on_update_pressed():
+	for cards in final_recipients.get_children():
+		cards.updateCardsList()

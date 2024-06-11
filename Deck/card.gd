@@ -31,15 +31,17 @@ func _ready():
 		
 	sprite_2d.scale = Vector2(0.5, 0.5)
 
-func _process(delta):
+func _process(_delta):
 	if solitaireMode:
 		if cardGrabbed:
 			global_position = get_global_mouse_position()
 		else:
 			position = originalPosition
 
-func _on_mouse_detection_input_event(viewport, event, shape_idx):
+func _on_mouse_detection_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("Click") and get_parent().get_child(-1) == self:
 		cardGrabbed = true
+		z_index = 1
 	elif Input.is_action_just_released("Click"):
 		cardGrabbed = false
+		z_index = 0

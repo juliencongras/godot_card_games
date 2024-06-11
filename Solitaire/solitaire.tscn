@@ -18,6 +18,7 @@ offset_bottom = 47.0
 
 [node name="Deck" parent="." instance=ExtResource("2_k117t")]
 position = Vector2(190, 100)
+metadata/_edit_group_ = true
 
 [node name="MouseDetection" type="Area2D" parent="Deck"]
 
