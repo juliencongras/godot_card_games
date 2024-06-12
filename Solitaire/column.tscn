@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfgooapmmmynt"]
+[gd_scene load_steps=3 format=3 uid="uid://cfgooapmmmynt"]
 
 [ext_resource type="Script" path="res://Solitaire/column.gd" id="1_1egmq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0vu7"]
+size = Vector2(119, 167)
+
 [node name="Column" type="Node2D"]
 script = ExtResource("1_1egmq")
+
+[node name="CardDetection" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDetection"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_x0vu7")
+
+[connection signal="area_entered" from="CardDetection" to="." method="_on_card_detection_area_entered"]
+[connection signal="area_exited" from="CardDetection" to="." method="_on_card_detection_area_exited"]
+[connection signal="input_event" from="CardDetection" to="." method="_on_card_detection_input_event"]

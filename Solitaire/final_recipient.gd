@@ -9,6 +9,7 @@ func addCard(card):
 	if (cardsList.size() == 0 and card.cardValue == 1) or (cardsList.size() > 0 and (cardsList[-1].cardValue + 1) == card.cardValue) and (cardsList[-1].cardSuit == card.cardSuit):
 		card.get_parent().remove_child(card)
 		card.position = Vector2.ZERO
+		card.originalPosition = position
 		add_child(card)
 		cardsList.append(card)
 		for cards in get_parent().get_children():

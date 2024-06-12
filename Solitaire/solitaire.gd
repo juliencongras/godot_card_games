@@ -8,10 +8,6 @@ extends Node2D
 func _ready():
 	deck.shuffleDeck()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 func _on_mouse_dectection_mouse_entered():
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
@@ -37,7 +33,3 @@ func drawFromDeck():
 
 func startGame():
 	pass
-
-func _on_update_pressed():
-	for cards in final_recipients.get_children():
-		cards.updateCardsList()

@@ -19,10 +19,12 @@ func _ready():
 	originalPosition = position
 	mouse_detection.visible = solitaireMode
 	
-	if cardSuit == "c" or "s":
+	if cardSuit == "c" or cardSuit == "s":
 		cardColor = "black"
-	elif cardSuit == "h" or "d":
+	elif cardSuit == "h" or cardSuit == "d":
 		cardColor = "red"
+	
+	print(cardSuit, cardColor)
 	
 	if cardHidden:
 		sprite_2d.texture = load(cardSpritePath + "1B.png")
@@ -38,7 +40,7 @@ func _process(_delta):
 		else:
 			position = originalPosition
 
-func _on_mouse_detection_input_event(_viewport, _event, _shape_idx):
+func _on_mouse_detection_input_event(_viewport, event, _shape_idx):
 	if Input.is_action_just_pressed("Click") and get_parent().get_child(-1) == self:
 		cardGrabbed = true
 		z_index = 1

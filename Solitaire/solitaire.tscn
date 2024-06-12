@@ -43,25 +43,27 @@ position = Vector2(928, 99)
 [node name="FinalRecipient4" parent="FinalRecipients" instance=ExtResource("4_pyqj7")]
 position = Vector2(1064, 99)
 
-[node name="Column" parent="." instance=ExtResource("4_l4i03")]
+[node name="ColumnRecipients" type="Node2D" parent="."]
+
+[node name="Column" parent="ColumnRecipients" instance=ExtResource("4_l4i03")]
 position = Vector2(147, 319)
 
-[node name="Column2" parent="." instance=ExtResource("4_l4i03")]
+[node name="Column2" parent="ColumnRecipients" instance=ExtResource("4_l4i03")]
 position = Vector2(291, 319)
 
-[node name="Column3" parent="." instance=ExtResource("4_l4i03")]
+[node name="Column3" parent="ColumnRecipients" instance=ExtResource("4_l4i03")]
 position = Vector2(435, 319)
 
-[node name="Column4" parent="." instance=ExtResource("4_l4i03")]
+[node name="Column4" parent="ColumnRecipients" instance=ExtResource("4_l4i03")]
 position = Vector2(579, 319)
 
-[node name="Column5" parent="." instance=ExtResource("4_l4i03")]
+[node name="Column5" parent="ColumnRecipients" instance=ExtResource("4_l4i03")]
 position = Vector2(723, 319)
 
-[node name="Column6" parent="." instance=ExtResource("4_l4i03")]
+[node name="Column6" parent="ColumnRecipients" instance=ExtResource("4_l4i03")]
 position = Vector2(867, 319)
 
-[node name="Column7" parent="." instance=ExtResource("4_l4i03")]
+[node name="Column7" parent="ColumnRecipients" instance=ExtResource("4_l4i03")]
 position = Vector2(1011, 319)
 
 [connection signal="input_event" from="Deck/MouseDetection" to="." method="_on_mouse_detection_input_event"]
