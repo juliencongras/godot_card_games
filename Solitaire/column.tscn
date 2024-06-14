@@ -15,6 +15,7 @@ collision_layer = 2
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_x0vu7")
 
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="area_entered" from="CardDetection" to="." method="_on_card_detection_area_entered"]
 [connection signal="area_exited" from="CardDetection" to="." method="_on_card_detection_area_exited"]
 [connection signal="input_event" from="CardDetection" to="." method="_on_card_detection_input_event"]

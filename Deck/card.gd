@@ -24,8 +24,6 @@ func _ready():
 	elif cardSuit == "h" or cardSuit == "d":
 		cardColor = "red"
 	
-	print(cardSuit, cardColor)
-	
 	if cardHidden:
 		sprite_2d.texture = load(cardSpritePath + "1B.png")
 	else:
@@ -40,10 +38,17 @@ func _process(_delta):
 		else:
 			position = originalPosition
 
-func _on_mouse_detection_input_event(_viewport, event, _shape_idx):
+func _on_mouse_detection_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("Click") and get_parent().get_child(-1) == self:
 		cardGrabbed = true
 		z_index = 1
 	elif Input.is_action_just_released("Click"):
 		cardGrabbed = false
 		z_index = 0
+
+func changeVisibilityCard():
+	cardHidden = !cardHidden
+	if cardHidden:
+		sprite_2d.texture = load(cardSpritePath + "1B.png")
+	else:
+		sprite_2d.texture = load(cardSpritePath + cardSprite + ".png")

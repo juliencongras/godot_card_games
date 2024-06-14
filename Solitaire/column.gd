@@ -6,10 +6,11 @@ var cardOffset : int = 35
 var cardsList : Array = []
 var hoveredCard
 
-func addCardToColumn(card):
-	if (cardsList.size() == 0 and card.cardValue == 13) or (cardsList.size() > 0 and (cardsList[-1].cardValue - 1) == card.cardValue) and (cardsList[-1].cardColor != card.cardColor):
+func addCardToColumn(card, forced):
+	if (cardsList.size() == 0 and card.cardValue == 13) or (cardsList.size() > 0 and (cardsList[-1].cardValue - 1) == card.cardValue) and (cardsList[-1].cardColor != card.cardColor) or forced:
 		var numberOfCards = get_child_count() - 1
-		card.get_parent().remove_child(card)
+		if card.get_parent():
+			card.get_parent().remove_child(card)
 		card.position = Vector2(0, cardOffset * numberOfCards)
 		card.originalPosition = card.position
 		add_child(card)
@@ -31,4 +32,9 @@ func _on_card_detection_area_exited(_area):
 
 func _on_card_detection_input_event(_viewport, _event, _shape_idx):
 	if hoveredCard != null and Input.is_action_just_released("Click"):
-		addCardToColumn(hoveredCard)
+		addCardToColumn(hoveredCard, false)
+
+func _on_child_exiting_tree(_node):
+	if get_child(get_child_count() - 2) != card_detection:
+		get_child(get_child_count() - 2).changeVisibilityCard()
+	updateCardsList()

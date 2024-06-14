@@ -3,10 +3,11 @@ extends Node2D
 @onready var deck = $Deck
 @onready var draw_recipient = $DrawRecipient
 @onready var final_recipients = $FinalRecipients
+@onready var column_recipients = $ColumnRecipients
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	deck.shuffleDeck()
+	startGame()
 
 func _on_mouse_dectection_mouse_entered():
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -32,4 +33,15 @@ func drawFromDeck():
 		deck.deck_sprite.visible = true
 
 func startGame():
-	pass
+	deck.shuffleDeck()
+	var columnCount : int = 0
+	for column in column_recipients.get_children():
+		for i in columnCount:
+			var drawnCard = deck.drawCard()
+			drawnCard.solitaireMode = true
+			drawnCard.cardHidden = true
+			column.addCardToColumn(drawnCard, true)
+		var drawnCard2 = deck.drawCard()
+		drawnCard2.solitaireMode = true
+		column.addCardToColumn(drawnCard2, true)
+		columnCount += 1

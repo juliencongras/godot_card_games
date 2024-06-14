@@ -32,9 +32,10 @@ Solitaire :
 - [x] Add playing field (7 columns)
 - [x] Add aces container (where to put the cards starting with aces)
 - [x] Add column stacking logic for cards
-- [ ] Being able to drag cards to different places
+- [x] Being able to drag cards to different places
+- [ ] Being able to drag groups of cards
 - [ ] Add double clicking to automatically move cards to final spot if able
-- [ ] Start solitaire game function
+- [x] Start solitaire game function
 
 Misc :
 - [x] Change SVG files to PNG for future proofing since Godot sometimes doesn't load SVG files properly
