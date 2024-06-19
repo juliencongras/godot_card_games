@@ -12,6 +12,7 @@ var cardHidden : bool = false
 var columnCardPicked : bool = false
 var inColumn : bool = false
 var cardColor : String
+var grabbedCardIndex : int = 0
 
 @onready var sprite_2d = $Sprite2D
 @onready var mouse_detection = $MouseDetection
@@ -38,7 +39,7 @@ func _process(_delta):
 		if cardGrabbed:
 			global_position = get_global_mouse_position()
 		elif columnCardPicked:
-			global_position = get_global_mouse_position() + Vector2(0, 30)
+			global_position = get_global_mouse_position() + (originalPosition - Vector2(0, 35 * grabbedCardIndex))
 		else:
 			position = originalPosition
 
@@ -47,8 +48,10 @@ func _on_mouse_detection_input_event(_viewport, _event, _shape_idx):
 		cardGrabbed = true
 		z_index = 1
 		for card in get_parent().get_children():
-			if card != self and card.get_index() > get_index():
-				columnCardPicked = true
+			if card.get_index() > get_index():
+				card.columnCardPicked = true
+				card.grabbedCardIndex = get_index() - 1
+				card.z_index = 1
 	elif Input.is_action_just_released("Click"):
 		cardGrabbed = false
 		columnCardPicked = false

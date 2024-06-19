@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dppij7fg3eex7"]
+
+[ext_resource type="Script" path="res://Deck/card.gd" id="1_37m4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2asnc"]
+size = Vector2(119, 167)
+
+[node name="Card" type="Node2D"]
+script = ExtResource("1_37m4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="MouseDetection" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetection"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_2asnc")
+
+[connection signal="input_event" from="MouseDetection" to="." method="_on_mouse_detection_input_event"]
