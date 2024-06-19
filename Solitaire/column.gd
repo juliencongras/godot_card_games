@@ -15,6 +15,7 @@ func addCardToColumn(card, forced):
 		card.originalPosition = card.position
 		add_child(card)
 		cardsList.append(card)
+		card.inColumn = true
 		for cards in get_parent().get_children():
 			cards.updateCardsList()
 
